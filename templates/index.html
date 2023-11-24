@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">                
+  <style type="text/tailwindcss">
+    /* @import url('https://fonts.cdnfonts.com/css/ds-digital'); */
+    @layer utilities {
+        .cs-top-menu-item{
+            @apply cursor-pointer py-1 hover:text-gray-100 relative after:absolute after:bottom-0 after:left-0 after:bg-light-coffee after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out after:duration-300;
+        }
+        .cs-icon{
+            @apply w-5 h-5 inline-block;
+        }
+        .cs-badge-circle{
+            @apply text-xs text-center rounded-full px-1.5;
+        }
+        .cs-bg-body{
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+        }
+        .clock {
+            font-family: 'DS-Digital';
+            @apply text-xl;
+        }
+    }  
+    td{
+        min-width: 90px;
+        text-align: left;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'light-coffee': '#c89f94',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<!--class="bg-gradient-to-bl from-slate-600 from-10% via-slate-500 via-40% to-slate-600 to-90%"-->
+
+<body>
+    <div id="root" class="cs-bg-body min-h-screen" >
+        <div class="content-wrapper text-base mx-auto font-sans">
+            <header class="mx-auto text-white">
+                <nav class="pt-6 w-[100vw] relative left-[calc(-50vw+50%) bg-gray-500">
+                    <div class="logo text-center text-xl font-semibold cursor-pointer">
+                        CoffeeStyle.
+                    </div>
+                    <ul class="pt-6 pb-3 flex items-center justify-center gap-8 uppercase text-sm text-gray-300 font-medium">
+                        <li class="cs-top-menu-item">
+                            <a href="" class="">Home</a>
+                        </li>
+                        <li class="cs-top-menu-item">
+                            <a href="" class="">Chiêm tinh</a>
+                        </li>
+                        <li class="cs-top-menu-item">
+                            <a href="" class="">Gieo quẻ</a>
+                        </li>
+                    </ul>                    
+                </nav>
+
+            </header>
+
+            <main class="py-6 mx-auto flex justify-center">
+                <div class="mx-2 rounded-2xl shadow-md bg-white bg-opacity-25 backdrop-blur-sm border border-white border-opacity-50">
+                    <div class="rounded-t-2xl">
+                        <div class="py-2 flex items-center justify-center">
+                            <h5 class="mx-2 uppercase">Gieo quẻ lục hào</h5>
+                        </div>
+                        <div name="clock" class="clock flex items-center justify-center" onload="showTime()"></div>
+                        <div class="py-2 flex items-center justify-center"><input style="background: none; text-align: center;" value="***"></div>
+                    </div>
+                    <div class="">
+                        <canvas id="myCanvas" class="brightness-150 drop-shadow" height="350" width="350">
+                        </canvas>
+                    </div>
+                    <div class="">
+                        <div id="Gieoque" class="py-2 flex items-center justify-center cursor-pointer">
+                            <p class="px-2 py-1 items-center text-center w-20 bg-blue-500 rounded-md text-sm text-white  border border-cyan-200">Gieo quẻ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-2 rounded-2xl shadow-md bg-white bg-opacity-25 backdrop-blur-sm border border-white border-opacity-50">
+                    <div class="rounded-t-2xl">
+                        <div class="py-2 flex items-center justify-center">
+                            <h5 class="mx-2 uppercase">Chiêm tinh</h5>
+                        </div>
+                        <div name="clock" class="clock flex items-center justify-center" onload="showTime()"></div>
+                        <div class="py-2 flex items-center justify-center clock">
+                            <input id="astro_day" class="w-10" type="number" placeholder="day" style="background: none; text-align: center;"><span>/</span>
+                            <input id="astro_month" class="w-10" type="number" placeholder="month" style="background: none; text-align: center;"><span>/</span>
+                            <input id="astro_year" class="w-10" type="number" placeholder="year" style="background: none; text-align: center;">&emsp;
+                            <input id="astro_hour" class="w-10" type="number" value="12" style="background: none; text-align: center;">:
+                            <input id="astro_minute" class="w-10" type="number" value="00" style="background: none; text-align: center;">
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="flex justify-center items-center" style="height: 350px; width: 350px;">
+                        <table id="astro_table" class="brightness-150 drop-shadow text-ms">
+                        </table>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div id="Chiemtinh_getdata" class="py-2 flex items-center justify-center cursor-pointer">
+                            <p class="px-2 py-1 items-center text-center w-20 bg-blue-500 rounded-md text-sm text-white  border border-cyan-200">Get data</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>  
+</body>
+
+<script src="/static/index.js"></script>
+</html>
